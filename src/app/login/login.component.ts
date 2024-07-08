@@ -16,7 +16,7 @@ export class LoginComponent {
   };
 
   entrar() {
-    if ((this.login.email != null) && (this.login.senha != null)) {
+    if (this.login.email && this.login.senha) {
       window.location.href = "/home";
     } else {
       alert('Campos em branco!');
