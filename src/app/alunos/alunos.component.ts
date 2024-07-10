@@ -9,4 +9,16 @@ import { Component } from '@angular/core';
 })
 export class AlunosComponent {
 
+  temp = localStorage.getItem('novoAluno');
+
+  //JSON.parse(localStorage.getItem('novoAluno')).nome
+
+  buscar() {
+    let temp2 = {};
+    if (this.temp != null) {
+      temp2 = JSON.parse(this.temp);
+      console.log(temp2)
+    }
+
+  }
 }

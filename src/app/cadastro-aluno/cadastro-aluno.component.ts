@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -18,11 +18,13 @@ export class CadastroAlunoComponent {
     celular: "",
     curso: ""
   };
-
+ 
   salvar() {
     if (this.cadastro.nome && this.cadastro.cpf
       && this.cadastro.email && this.cadastro.celular
       && this.cadastro.curso) {
+
+        localStorage.setItem("novoAluno", JSON.stringify(this.cadastro))
       
         window.location.href = "/alunos";
         alert('Cadastro realizado com sucesso!');
