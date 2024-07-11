@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { Location } from '@angular/common';
+import { HeaderComponent } from '../../shared/components/header/header.component';
 
 @Component({
   selector: 'app-cadastro-aluno',
   standalone: true,
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink, HeaderComponent],
   templateUrl: './cadastro-aluno.component.html',
   styleUrl: './cadastro-aluno.component.css'
 })

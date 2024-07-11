@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { HeaderComponent } from '../../shared/components/header/header.component';
 
 interface DadosAluno {
   nome: string,
@@ -14,7 +15,7 @@ interface DadosAluno {
 @Component({
   selector: 'app-alunos',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, HeaderComponent],
   templateUrl: './alunos.component.html',
   styleUrl: './alunos.component.css'
 })
