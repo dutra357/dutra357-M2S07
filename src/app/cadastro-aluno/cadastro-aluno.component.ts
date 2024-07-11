@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-cadastro-aluno',
@@ -18,6 +19,18 @@ export class CadastroAlunoComponent {
     celular: "",
     curso: ""
   };
+  
+  constructor(private router: Router){
+    if(this.router.getCurrentNavigation()?.extras.state){
+      let temp = this.router.getCurrentNavigation()?.extras.state;
+
+      this.cadastro.nome = temp?.['aluno'].nome;
+      this.cadastro.cpf = temp?.['aluno'].cpf;
+      this.cadastro.email = temp?.['aluno'].email;
+      this.cadastro.celular = temp?.['aluno'].celular;
+      this.cadastro.curso = temp?.['aluno'].curso;
+    }
+  }
  
   salvar() {
     if (this.cadastro.nome && this.cadastro.cpf
@@ -26,8 +39,8 @@ export class CadastroAlunoComponent {
 
         localStorage.setItem("novoAluno", JSON.stringify(this.cadastro))
       
-        window.location.href = "/alunos";
         alert('Cadastro realizado com sucesso!');
+        this.router.navigate(["alunos"]);
     } else {
       alert('Campos incompletos.');
     }

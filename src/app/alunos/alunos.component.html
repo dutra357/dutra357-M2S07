@@ -1,3 +1,40 @@
-<p>alunos works!</p>
+<div class="container">
+    <div class="pesquisa">
+        <input type="text">
+        <button>Pesquisar</button>
+    </div>
 
-<button (click)="buscar()">LER</button>
+    <section class="notas">
+        <div class="box-notas-linhas">
+            <h3>Listagem de alunos cadastrados</h3>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Curso</th>
+                    <th>Opções</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let aluno of dadosAluno">
+                    <td>{{aluno.nome}}</td>
+                    <td>{{aluno.email}}</td>
+                    <td>{{aluno.curso}}</td>
+                    <td>
+                        <button (click)="editar(aluno)">Editar</button>
+                        <button (click)="excluir()">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+
+
+    <button (click)="buscar()">Console.log</button>
+</div>
