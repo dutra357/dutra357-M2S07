@@ -55,7 +55,6 @@ export class AlunosComponent {
     }
   }
 
-
   editar(aluno: any) {
     this.router.navigate(['/cadastroAlunos'], { state: {aluno} });
   }
