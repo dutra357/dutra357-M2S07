@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { HeaderComponent } from '../../shared/components/header/header.component';
+import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-cadastro-aluno',
   standalone: true,
-  imports: [FormsModule, RouterLink, HeaderComponent],
+  imports: [FormsModule, RouterLink, HeaderComponent, SidebarComponent],
   templateUrl: './cadastro-aluno.component.html',
   styleUrl: './cadastro-aluno.component.css'
 })
