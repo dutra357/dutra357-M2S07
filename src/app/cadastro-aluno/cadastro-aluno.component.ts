@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { HeaderComponent } from '../../shared/components/header/header.component';
 import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
+import { AlunosService } from '../shared/services/alunos.service';
 
 @Component({
   selector: 'app-cadastro-aluno',
@@ -21,7 +22,7 @@ export class CadastroAlunoComponent {
     curso: ""
   };
   
-  constructor(private router: Router){
+  constructor(private router: Router, private alunosService: AlunosService){
     let temp = this.router.getCurrentNavigation()?.extras.state;
     
     if(temp){
@@ -38,17 +39,13 @@ export class CadastroAlunoComponent {
       && this.cadastro.email && this.cadastro.celular
       && this.cadastro.curso) {
 
-        localStorage.setItem("novoAluno", JSON.stringify(this.cadastro))
-      
-        alert('Cadastro realizado com sucesso!');
+        //localStorage.setItem("novoAluno", JSON.stringify(this.cadastro))
+
+        this.alunosService.cadastrarAluno(this.cadastro);
+        
         this.router.navigate(["alunos"]);
     } else {
       alert('Campos incompletos.');
     }
   }
-
-  recuperarSenha() {
-    alert('Processo de recuperação de senha enviado para o e-mail cadastrado');
-  }
-
 }

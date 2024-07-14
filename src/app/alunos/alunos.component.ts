@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { HeaderComponent } from '../../shared/components/header/header.component';
 import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
+import { AlunosService } from '../shared/services/alunos.service';
 
 interface DadosAluno {
   nome: string,
@@ -16,28 +17,26 @@ interface DadosAluno {
 @Component({
   selector: 'app-alunos',
   standalone: true,
-  imports: [CommonModule, RouterModule, HeaderComponent, SidebarComponent],
+  imports: [CommonModule, RouterModule,
+     HeaderComponent, SidebarComponent],
   templateUrl: './alunos.component.html',
   styleUrl: './alunos.component.css'
 })
 
 
 export class AlunosComponent {
-  dadosAluno: DadosAluno[] = [];
+  dadosAluno: DadosAluno[] = this.alunoService.getAlunos();
   campoBusca: string = '';
 
-  constructor(private router: Router) {
-    const novoAluno = localStorage.getItem("novoAluno");
-    if (novoAluno) {
-      this.dadosAluno.unshift(JSON.parse(novoAluno));
-    }
+  constructor(private router: Router, private alunoService: AlunosService) {
+    // const novoAluno = localStorage.getItem("novoAluno");
+    // if (novoAluno) {
+    //   this.dadosAluno.unshift(JSON.parse(novoAluno));
+    // }
   }
 
   buscar() {
-    console.log(this.dadosAluno)
-  }
-
-  // pesquisar(): void {
+    //console.log(this.dadosAluno)
   //   if (this.campoBusca) {
   //     this.filteredStudents = this.students.filter(student =>
   //       student.fullName.toLowerCase().includes(this.campoBusca.toLowerCase()) ||
@@ -46,13 +45,14 @@ export class AlunosComponent {
   //   } else {
   //     this.filteredStudents = [...this.students];
   //   }
-  // }
+  }
 
-  excluir() {
+  excluir(aluno: any) {
     let confirmacao = confirm("Deseja mesmo excluir esse usuário?");
     if (confirmacao) {
-      localStorage.removeItem("novoAluno")
-      window.location.href = "/alunos";
+      if(this.alunoService.excluirAluno(aluno)) {
+        this.router.navigate(['/alunos']);
+      };
     }
   }
 
