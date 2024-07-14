@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -5,13 +6,16 @@ import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, CommonModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
 
-  logado: boolean = false;
+  logadoAdm: boolean = true;
+
+  isValid = true;
+
 
   constructor(private router: Router) {
   }
@@ -21,7 +25,7 @@ export class SidebarComponent {
   }
 
   alunos() {
-    if (this.logado) {
+    if (this.logadoAdm) {
       this.router.navigate(["alunos"]);
     }
   }

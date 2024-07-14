@@ -3,5 +3,5 @@
     <button>Atividades</button>
     <button>Solicitações</button>
     <button>Biblioteca Online</button>
-    <button (click)="alunos()">Alunos</button>
+    <button (click)="alunos()" *ngIf="isValid">Alunos</button>
 </div>
