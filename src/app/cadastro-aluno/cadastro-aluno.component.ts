@@ -23,6 +23,7 @@ export class CadastroAlunoComponent {
   
   constructor(private router: Router){
     let temp = this.router.getCurrentNavigation()?.extras.state;
+    
     if(temp){
       this.cadastro.nome = temp?.['aluno'].nome;
       this.cadastro.cpf = temp?.['aluno'].cpf;

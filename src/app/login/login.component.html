@@ -1,5 +1,4 @@
 <h3>Login de usuário</h3>
-
 <div>
     <form #acaoLogin="ngForm">
 
@@ -17,6 +16,7 @@
             #senha="ngModel" [ngModelOptions]="{standalone: true}" required>
 
             <button type="button" class="entrar" (click)="entrar()">Entrar</button>
+            <button type="button" class="entrar" (click)="sair()">Sair</button>
             <button type="button" class="recuperar" (click)="recuperarSenha()">Recuperar senha</button>
         </fieldset>
     </form>

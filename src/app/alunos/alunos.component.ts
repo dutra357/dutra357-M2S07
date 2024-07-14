@@ -25,7 +25,6 @@ interface DadosAluno {
 export class AlunosComponent {
   dadosAluno: DadosAluno[] = [];
   campoBusca: string = '';
-  editado?: {};
 
   constructor(private router: Router) {
     const novoAluno = localStorage.getItem("novoAluno");
