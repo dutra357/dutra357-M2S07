@@ -34,7 +34,7 @@ export class DisciplinasService {
     {
       nome: 'Matemática',
       semestre:'1',
-      disciplinas: ['Cálculo A', 'Física I', 'Álgebra']
+      disciplinas: ['Cálculo A', 'Física I', 'Álgebra', 'Geometria Plan.']
     },
     {
       nome: 'Matemática',

@@ -10,19 +10,19 @@
 
         <section class="notas" *ngFor="let semestre of semestres">
             <div class="box-notas-linhas">
-                <h4>Matrículas para o semestre: {{ semestre.semestre }}</h4>
+                <h4>Matrículas para: {{ semestre.semestre }}</h4>
             </div>
             <table>
                 <thead>
                     <tr>
                         <th>Disciplina</th>
-                        <th>Hora/aula</th>
+                        <th>Curso</th>
                     </tr>
                 </thead>
                 <tbody *ngFor="let disciplina of semestre.disciplinas">
                     <tr>
-                        <td>{{ disciplina.nome }}</td>
-                        <td>{{ disciplina.carga }}</td>
+                        <td>{{ disciplina }}</td>
+                        <td>{{ semestre.curso }}</td>
                     </tr>
                 </tbody>
             </table>

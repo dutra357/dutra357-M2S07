@@ -29,10 +29,6 @@ export class AlunosComponent {
   campoBusca: string = '';
 
   constructor(private router: Router, private alunoService: AlunosService) {
-    // const novoAluno = localStorage.getItem("novoAluno");
-    // if (novoAluno) {
-    //   this.dadosAluno.unshift(JSON.parse(novoAluno));
-    // }
   }
 
   buscar() {

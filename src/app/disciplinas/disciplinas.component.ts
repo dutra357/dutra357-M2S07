@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../../shared/components/header/header.component';
 import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
+import { DisciplinasService } from '../shared/services/disciplinas.service';
 
 @Component({
   selector: 'app-disciplinas',
@@ -12,22 +13,24 @@ import { SidebarComponent } from '../../shared/components/sidebar/sidebar.compon
 })
 export class DisciplinasComponent {
 
-  alumni = 'João Silveira'
-  semestre = {
-    semestre: '',
-    disciplinas: [{disciplina: 'carga'}],
-  };
+  constructor(private disciplinasService: DisciplinasService) {
+  }
 
+  alumni = 'João Silveira';
+
+  disciplinasMatemática1 = this.disciplinasService.getDisciplinasCursoSemestre({nome: 'Matemática', semestre: '1'});
+  disciplinasMatemática2 = this.disciplinasService.getDisciplinasCursoSemestre({nome: 'Matemática', semestre: '2'});
+  
   semestres = [
     {
+      curso: 'Matemática',
       semestre: '2024/1',
-      disciplinas: [{nome: 'Matemática', carga: '72h/aula'},
-        {nome: 'Português', carga: '56h/aula'}],
+      disciplinas: this.disciplinasMatemática1
     },
     {
+      curso: 'Matemática',
       semestre: '2024/2',
-      disciplinas: [{nome: 'Física', carga: '72h/aula'},
-        {nome: 'Inglês', carga: '56h/aula'}],
+      disciplinas: this.disciplinasMatemática2
     }
   ];
 
